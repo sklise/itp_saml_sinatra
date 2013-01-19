@@ -1,6 +1,8 @@
 require 'bundler'
 Bundler.require
 
+require 'pp'
+
 use Rack::Session::Cookie, key: "ooooooohyeaaaaa"
 use OmniAuth::Builder do
   provider :saml,
@@ -16,4 +18,5 @@ end
 
 post '/auth/saml/callback' do
   auth = request.env['omniauth.auth']
+  pp auth
 end
